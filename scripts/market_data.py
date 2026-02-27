@@ -33,7 +33,7 @@ class MarketDataClient:
         
         Args:
             api_key: Alpha Vantage API key. If None, reads from ALPHA_VANTAGE_API_KEY env var.
-                    Users with paid plans can provide their own key for higher limits.
+                     Users can provide their own key (free or paid tier).
         """
         self.api_key = api_key or os.getenv("ALPHA_VANTAGE_API_KEY")
         if not self.api_key:
@@ -42,26 +42,6 @@ class MarketDataClient:
                 "Set ALPHA_VANTAGE_API_KEY env var or pass api_key parameter. "
                 "Get free key at: https://www.alphavantage.co/support/#api-key"
             )
-        
-        # Track rate limits (free: 25/day, paid: 75/min or more)
-        self.call_count = 0
-        self.max_calls = 25  # Default to free tier
-    
-    def set_paid_tier(self, tier: str = "premium"):
-        """
-        Adjust rate limits for paid Alpha Vantage plans.
-        
-        Tiers:
-        - free: 25 calls/day
-        - premium: 75 calls/minute (324,000/day)
-        - enterprise: Higher limits
-        """
-        limits = {
-            "free": 25,
-            "premium": 75 * 60 * 24,  # 75/min = ~324k/day
-            "enterprise": float('inf')
-        }
-        self.max_calls = limits.get(tier, 25)
     
     def get_price_history(
         self, 
