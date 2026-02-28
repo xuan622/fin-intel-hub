@@ -1,6 +1,6 @@
-# Finance Data Intelligence
+# Fin Intel Hub
 
-OpenClaw skill for comprehensive financial data scraping and analytics.
+OpenClaw skill for comprehensive financial intelligence and analytics.
 
 ## Features
 
@@ -19,7 +19,7 @@ OpenClaw skill for comprehensive financial data scraping and analytics.
 
 Copy this skill folder to your OpenClaw skills directory:
 ```bash
-cp -r finance-data-intelligence ~/.openclaw/skills/
+cp -r fin-intel-hub ~/.openclaw/skills/
 ```
 
 ### 2. Get API Keys (Optional)
@@ -178,7 +178,7 @@ unemployment = get_unemployment()
 ## Project Structure
 
 ```
-finance-data-intelligence/
+fin-intel-hub/
 ├── SKILL.md                  # Skill documentation
 ├── README.md                 # This file
 ├── SECURITY.md               # Security hardening checklist

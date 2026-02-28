@@ -1,11 +1,11 @@
 ---
-name: finance-data-intelligence
-description: Comprehensive financial data scraping and analytics for SEC filings, earnings, crypto on-chain data, news sentiment, macro indicators, and global stock markets (US, China, Hong Kong, Taiwan, Japan, Korea). Use when users need to: (1) Retrieve SEC EDGAR filings (10-K, 10-Q, 8-K), (2) Track upcoming earnings and historical performance, (3) Monitor crypto on-chain metrics and whale alerts, (4) Analyze financial news sentiment, (5) Access macroeconomic indicators (Fed rates, CPI, unemployment), (6) Get global stock prices including Asian markets (HKEX, Tokyo, Taiwan, Korea, Shanghai, Shenzhen), or any financial data research and analysis tasks.
+name: fin-intel-hub
+description: Comprehensive financial intelligence hub for SEC filings, earnings, crypto on-chain data, news sentiment, macro indicators, options flow, and global stock markets (US, China, Hong Kong, Taiwan, Japan, Korea). Use when users need to: (1) Retrieve SEC EDGAR filings (10-K, 10-Q, 8-K), (2) Track upcoming earnings and historical performance, (3) Monitor crypto on-chain metrics and whale alerts, (4) Analyze financial news sentiment, (5) Access macroeconomic indicators (Fed rates, CPI, unemployment), (6) Analyze options flow (Max Pain, unusual volume, call/put ratio), (7) Get global stock prices including Asian markets (HKEX, Tokyo, Taiwan, Korea, Shanghai, Shenzhen), or any financial data research and analysis tasks.
 ---
 
-# Finance Data Intelligence
+# Fin Intel Hub
 
-Financial data scraping and analytics skill for OpenClaw. Supports global markets including US, China, Hong Kong, Taiwan, Japan, and Korea.
+Financial intelligence hub for OpenClaw. Supports global markets including US, China, Hong Kong, Taiwan, Japan, and Korea.
 
 ## Features
 
