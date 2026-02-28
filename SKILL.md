@@ -76,4 +76,27 @@ prices = get_tokyo_stock("7203", period="1y")
 prices = get_taiwan_stock("2330", period="1y")
 ```
 
+### Indices & Futures Examples
+```python
+from scripts.yahoo_finance import get_sp500, get_nikkei225, get_vix
+from scripts.yahoo_finance import get_crude_oil, get_gold, list_available_indices
+
+# Global indices (15+ available)
+sp500 = get_sp500(period="1y")
+nasdaq = get_nasdaq(period="1y")
+nikkei = get_nikkei225(period="1y")
+hang_seng = get_hang_seng(period="1y")
+vix = get_vix(period="1mo")  # Fear index
+
+# Futures (15+ available)
+oil_futures = get_crude_oil(period="6mo")
+gold_futures = get_gold(period="6mo")
+sp_futures = get_sp500_futures(period="1mo")
+natural_gas = get_natural_gas(period="6mo")
+
+# List all available
+indices = list_available_indices()
+futures = list_available_futures()
+```
+
 For detailed API documentation and data schemas, see `references/`.

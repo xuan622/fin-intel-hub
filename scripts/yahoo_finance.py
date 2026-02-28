@@ -321,6 +321,223 @@ def get_shenzhen_stock(code: str, **kwargs) -> List[Dict]:
     return get_price_history(symbol, **kwargs)
 
 
+# ============================================================================
+# INDICES - Major Global Stock Market Indices
+# ============================================================================
+
+MAJOR_INDICES = {
+    # US Indices
+    "sp500": "^GSPC",           # S&P 500
+    "dow_jones": "^DJI",        # Dow Jones Industrial Average
+    "nasdaq": "^IXIC",          # Nasdaq Composite
+    "russell2000": "^RUT",      # Russell 2000
+    "vix": "^VIX",              # Volatility Index (Fear index)
+    
+    # Asian Indices
+    "nikkei225": "^N225",       # Japan Nikkei 225
+    "hang_seng": "^HSI",        # Hong Kong Hang Seng
+    "shanghai_composite": "000001.SS",  # Shanghai Composite
+    "csi300": "000300.SS",      # China CSI 300
+    "taiwan_weighted": "^TWII", # Taiwan Weighted Index
+    "kospi": "^KS11",           # Korea KOSPI
+    "sensex": "^BSESN",         # India BSE Sensex
+    "nifty50": "^NSEI",         # India NIFTY 50
+    "straits_times": "^STI",    # Singapore Straits Times
+    
+    # European Indices
+    "ftse100": "^FTSE",         # UK FTSE 100
+    "dax": "^GDAXI",            # Germany DAX
+    "cac40": "^FCHI",           # France CAC 40
+    "euro_stoxx50": "^STOXX50E", # Euro Stoxx 50
+    
+    # Other
+    "asx200": "^AXJO",          # Australia ASX 200
+    "tsx": "^GSPTSE",           # Canada TSX Composite
+}
+
+def get_index(symbol_key: str, **kwargs) -> List[Dict]:
+    """
+    Get major stock market index data.
+    
+    Args:
+        symbol_key: Key from MAJOR_INDICES (e.g., 'sp500', 'nikkei225', 'hang_seng')
+    """
+    if symbol_key not in MAJOR_INDICES:
+        raise ValueError(f"Unknown index: {symbol_key}. Available: {list(MAJOR_INDICES.keys())}")
+    
+    return get_price_history(MAJOR_INDICES[symbol_key], **kwargs)
+
+
+def get_sp500(**kwargs) -> List[Dict]:
+    """Get S&P 500 index data."""
+    return get_index("sp500", **kwargs)
+
+
+def get_nasdaq(**kwargs) -> List[Dict]:
+    """Get Nasdaq Composite index data."""
+    return get_index("nasdaq", **kwargs)
+
+
+def get_dow_jones(**kwargs) -> List[Dict]:
+    """Get Dow Jones Industrial Average data."""
+    return get_index("dow_jones", **kwargs)
+
+
+def get_nikkei225(**kwargs) -> List[Dict]:
+    """Get Nikkei 225 index data."""
+    return get_index("nikkei225", **kwargs)
+
+
+def get_hang_seng(**kwargs) -> List[Dict]:
+    """Get Hang Seng index data."""
+    return get_index("hang_seng", **kwargs)
+
+
+def get_vix(**kwargs) -> List[Dict]:
+    """Get VIX (Volatility/Fear) index data."""
+    return get_index("vix", **kwargs)
+
+
+# ============================================================================
+# FUTURES - Stock Index Futures & Commodity Futures
+# ============================================================================
+
+FUTURES = {
+    # Stock Index Futures
+    "es": "ES=F",       # E-mini S&P 500 Futures
+    "nq": "NQ=F",       # E-mini Nasdaq 100 Futures
+    "ym": "YM=F",       # E-mini Dow Futures
+    "rty": "RTY=F",     # E-mini Russell 2000 Futures
+    "nikkei_futures": "NKD=F",  # Nikkei 225 Futures
+    
+    # Commodity Futures
+    "crude_oil": "CL=F",        # WTI Crude Oil
+    "brent_oil": "BZ=F",        # Brent Crude Oil
+    "natural_gas": "NG=F",      # Natural Gas
+    "gold": "GC=F",             # Gold
+    "silver": "SI=F",           # Silver
+    "copper": "HG=F",           # Copper
+    "platinum": "PL=F",         # Platinum
+    "palladium": "PA=F",        # Palladium
+    
+    # Agriculture Futures
+    "corn": "ZC=F",             # Corn
+    "wheat": "ZW=F",            # Wheat
+    "soybeans": "ZS=F",         # Soybeans
+    "coffee": "KC=F",           # Coffee
+    "sugar": "SB=F",            # Sugar
+    "cotton": "CT=F",           # Cotton
+}
+
+def get_future(symbol_key: str, **kwargs) -> List[Dict]:
+    """
+    Get futures data.
+    
+    Args:
+        symbol_key: Key from FUTURES (e.g., 'es', 'crude_oil', 'gold')
+    """
+    if symbol_key not in FUTURES:
+        raise ValueError(f"Unknown future: {symbol_key}. Available: {list(FUTURES.keys())}")
+    
+    return get_price_history(FUTURES[symbol_key], **kwargs)
+
+
+def get_sp500_futures(**kwargs) -> List[Dict]:
+    """Get E-mini S&P 500 Futures."""
+    return get_future("es", **kwargs)
+
+
+def get_crude_oil(**kwargs) -> List[Dict]:
+    """Get WTI Crude Oil Futures."""
+    return get_future("crude_oil", **kwargs)
+
+
+def get_gold(**kwargs) -> List[Dict]:
+    """Get Gold Futures."""
+    return get_future("gold", **kwargs)
+
+
+def get_silver(**kwargs) -> List[Dict]:
+    """Get Silver Futures."""
+    return get_future("silver", **kwargs)
+
+
+def get_natural_gas(**kwargs) -> List[Dict]:
+    """Get Natural Gas Futures."""
+    return get_future("natural_gas", **kwargs)
+
+
+# ============================================================================
+# COMMODITIES - Spot Prices (via Yahoo Finance ETFs/ETNs as proxy)
+# ============================================================================
+
+COMMODITY_ETFS = {
+    # Precious Metals
+    "gold_spot": "GLD",         # SPDR Gold Trust
+    "silver_spot": "SLV",       # iShares Silver Trust
+    "gold_miners": "GDX",       # VanEck Gold Miners ETF
+    "junior_gold": "GDXJ",      # VanEck Junior Gold Miners
+    
+    # Oil & Gas
+    "oil_etf": "USO",           # United States Oil Fund
+    "brent_etf": "BNO",         # United States Brent Oil Fund
+    "natural_gas_etf": "UNG",   # United States Natural Gas Fund
+    
+    # Broad Commodities
+    "commodities_broad": "DBC", # Invesco DB Commodity Tracking
+    "agriculture": "DBA",       # Invesco DB Agriculture Fund
+    "base_metals": "DBB",       # Invesco DB Base Metals Fund
+    "energy": "DBE",            # Invesco DB Energy Fund
+    
+    # Others
+    "uranium": "URA",           # Global X Uranium ETF
+    "lithium": "LIT",           # Global X Lithium & Battery Tech
+    "copper_miners": "COPX",    # Global X Copper Miners ETF
+}
+
+def get_commodity_etf(symbol_key: str, **kwargs) -> List[Dict]:
+    """
+    Get commodity ETF data (as proxy for commodity prices).
+    
+    Args:
+        symbol_key: Key from COMMODITY_ETFS
+    """
+    if symbol_key not in COMMODITY_ETFS:
+        raise ValueError(f"Unknown commodity ETF: {symbol_key}")
+    
+    return get_price_history(COMMODITY_ETFS[symbol_key], **kwargs)
+
+
+def get_gold_etf(**kwargs) -> List[Dict]:
+    """Get SPDR Gold Trust (GLD) - Gold price proxy."""
+    return get_commodity_etf("gold_spot", **kwargs)
+
+
+def get_silver_etf(**kwargs) -> List[Dict]:
+    """Get iShares Silver Trust (SLV) - Silver price proxy."""
+    return get_commodity_etf("silver_spot", **kwargs)
+
+
+def get_oil_etf(**kwargs) -> List[Dict]:
+    """Get US Oil Fund (USO) - Oil price proxy."""
+    return get_commodity_etf("oil_etf", **kwargs)
+
+
+def list_available_indices() -> Dict[str, str]:
+    """List all available indices."""
+    return MAJOR_INDICES.copy()
+
+
+def list_available_futures() -> Dict[str, str]:
+    """List all available futures."""
+    return FUTURES.copy()
+
+
+def list_available_commodity_etfs() -> Dict[str, str]:
+    """List all available commodity ETFs."""
+    return COMMODITY_ETFS.copy()
+
+
 if __name__ == "__main__":
     # Test examples
     print("Testing Asian market data...")

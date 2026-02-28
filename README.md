@@ -89,6 +89,29 @@ prices = get_shanghai_stock("600519")  # Kweichow Moutai
 prices = get_shenzhen_stock("000001")  # Ping An Bank
 ```
 
+### Indices & Futures
+```python
+from scripts.yahoo_finance import get_sp500, get_nasdaq, get_nikkei225, get_hang_seng
+from scripts.yahoo_finance import get_crude_oil, get_gold, get_sp500_futures
+
+# Major Indices
+sp500 = get_sp500(period="1y")
+nasdaq = get_nasdaq(period="1y")
+nikkei = get_nikkei225(period="1y")
+hang_seng = get_hang_seng(period="1y")
+vix = get_vix(period="1mo")  # Fear index
+
+# Futures
+oil_futures = get_crude_oil(period="6mo")
+gold_futures = get_gold(period="6mo")
+sp_futures = get_sp500_futures(period="1mo")
+
+# List all available
+from scripts.yahoo_finance import list_available_indices, list_available_futures
+indices = list_available_indices()   # 15+ global indices
+futures = list_available_futures()   # 15+ futures contracts
+```
+
 ### Crypto On-Chain
 ```python
 from scripts.crypto_onchain import get_defi_tvl, get_top_exchanges, get_exchange_flows
