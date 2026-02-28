@@ -2,6 +2,8 @@
 
 OpenClaw skill for comprehensive financial intelligence and analytics.
 
+**🌏 Multi-language Support:** [English](#fin-intel-hub) | [简体中文 / 繁體中文](README_CN.md)
+
 ## Features
 
 - **SEC Filings** — Retrieve 10-K, 10-Q, 8-K filings from EDGAR

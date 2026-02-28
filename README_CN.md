@@ -1,0 +1,200 @@
+# Fin Intel Hub 金融智能中心
+
+OpenClaw 金融数据智能分析技能 - 支持全球市场包括美国、中国、香港、台湾、日本和韩国。
+
+🇨🇳 简体中文 | 🇭🇰 繁體中文 (香港/台灣)
+
+---
+
+## 功能特点 / 功能特點
+
+### 🇨🇳 简体中文
+
+- **SEC 财报** - 获取 10-K、10-Q、8-K 财报文件
+- **市场数据** - 股票价格、收益、基本面数据
+- **亚洲市场** - 香港、东京、台湾、韩国、上海、深圳交易所
+- **指数与期货** - 15+ 全球指数、商品期货
+- **期权流分析** - 异常成交量、认购/认沽比率、Max Pain
+- **财报日历** - 历史财报、 beat/miss 趋势、下次财报日期
+- **加密货币链上** - DeFi TVL、交易所资金流、Gas 费用
+- **新闻情绪** - 财经新闻情绪分析
+- **宏观数据** - 美联储利率、CPI、失业率
+
+### 🇭🇰 繁體中文 (香港)
+
+- **SEC 財報** - 獲取 10-K、10-Q、8-K 財報文件
+- **市場數據** - 股票價格、收益、基本面數據
+- **亞洲市場** - 香港、東京、台灣、韓國、上海、深圳交易所
+- **指數與期貨** - 15+ 全球指數、商品期貨
+- **期權流分析** - 異常成交量、認購/認沽比率、Max Pain
+- **財報日曆** - 歷史財報、 beat/miss 趨勢、下次財報日期
+- **加密貨幣鏈上** - DeFi TVL、交易所資金流、Gas 費用
+- **新聞情緒** - 財經新聞情緒分析
+- **宏觀數據** - 美聯儲利率、CPI、失業率
+
+---
+
+## 快速开始 / 快速開始
+
+### 🇨🇳 简体中文
+
+```bash
+# 安装技能
+cp -r fin-intel-hub ~/.openclaw/skills/
+
+# 无需 API 密钥即可使用！
+# 添加密钥可解锁更多功能（可选）
+```
+
+### 🇭🇰 繁體中文 (香港)
+
+```bash
+# 安裝技能
+cp -r fin-intel-hub ~/.openclaw/skills/
+
+# 無需 API 密鑰即可使用！
+# 添加密鑰可解鎖更多功能（可選）
+```
+
+---
+
+## 使用示例 / 使用示例
+
+### 股票市场 / 股票市場
+
+**简体中文:**
+```python
+from scripts.yahoo_finance import get_hong_kong_stock, get_shanghai_stock
+
+# 香港 - 腾讯 (0700.HK)
+prices = get_hong_kong_stock("0700", period="1y")
+
+# 上海 - 贵州茅台 (600519)
+prices = get_shanghai_stock("600519")
+```
+
+**繁體中文 (香港):**
+```python
+from scripts.yahoo_finance import get_hong_kong_stock, get_taiwan_stock
+
+# 香港 - 騰訊 (0700.HK)
+prices = get_hong_kong_stock("0700", period="1y")
+
+# 台灣 - 台積電 (2330.TW)
+prices = get_taiwan_stock("2330")
+```
+
+### 期权流分析 / 期權流分析
+
+**简体中文:**
+```python
+from scripts.options_data import analyze_options_flow
+
+# 分析期权流
+flow = analyze_options_flow("AAPL")
+print(f"认购/认沽比率: {flow['analysis']['call_put_ratio']}")
+print(f"Max Pain: ${flow['analysis']['max_pain']}")
+```
+
+**繁體中文 (香港):**
+```python
+from scripts.options_data import analyze_options_flow
+
+# 分析期權流
+flow = analyze_options_flow("AAPL")
+print(f"認購/認沽比率: {flow['analysis']['call_put_ratio']}")
+print(f"Max Pain: ${flow['analysis']['max_pain']}")
+```
+
+### 财报分析 / 財報分析
+
+**简体中文:**
+```python
+from scripts.earnings_data import get_earnings_history, analyze_earnings_trend
+
+# 获取财报历史
+earnings = get_earnings_history("AAPL", limit=4)
+
+# 分析财报趋势
+trend = analyze_earnings_trend("TSLA")
+print(f"超预期率: {trend['beat_rate']}%")
+```
+
+**繁體中文 (香港):**
+```python
+from scripts.earnings_data import get_earnings_history, analyze_earnings_trend
+
+# 獲取財報歷史
+earnings = get_earnings_history("AAPL", limit=4)
+
+# 分析財報趨勢
+trend = analyze_earnings_trend("TSLA")
+print(f"超預期率: {trend['beat_rate']}%")
+```
+
+---
+
+## 支持的市场 / 支持的市場
+
+### 🇨🇳 简体中文
+
+| 市场 | 代码示例 | 交易所 |
+|------|----------|--------|
+| 美国 | AAPL, TSLA | NYSE/NASDAQ |
+| 香港 | 0700, 3690 | 港交所 |
+| 上海 | 600519, 000001 | 上交所/深交所 |
+| 东京 | 7203, 6758 | 东京证券交易所 |
+| 台湾 | 2330, 2317 | 台湾证券交易所 |
+| 韩国 | 005930, 035420 | 韩国交易所 |
+
+### 🇭🇰 繁體中文 (香港)
+
+| 市場 | 代碼示例 | 交易所 |
+|------|----------|--------|
+| 美國 | AAPL, TSLA | NYSE/NASDAQ |
+| 香港 | 0700, 3690 | 港交所 |
+| 上海 | 600519, 000001 | 上交所/深交所 |
+| 東京 | 7203, 6758 | 東京證券交易所 |
+| 台灣 | 2330, 2317 | 台灣證券交易所 |
+| 韓國 | 005930, 035420 | 韓國交易所 |
+
+---
+
+## 免责声明 / 免責聲明
+
+### 🇨🇳 简体中文
+
+**重要提示：在使用本技能前请仔细阅读此免责声明**
+
+- **本技能仅供信息和教育目的使用**
+- **不构成投资建议** - 作者不是金融顾问
+- **数据准确性** - 数据来自第三方 API，可能存在延迟或错误
+- **投资风险** - 投资涉及重大风险，可能导致本金损失
+- **请咨询专业金融顾问** - 本技能不能替代专业建议
+- **使用风险自负** - 作者不对任何损失承担责任
+
+**使用本技能即表示您同意此免责声明。**
+
+### 🇭🇰 繁體中文 (香港)
+
+**重要提示：在使用本技能前請仔細閱讀此免責聲明**
+
+- **本技能僅供信息和教育目的使用**
+- **不構成投資建議** - 作者不是金融顧問
+- **數據準確性** - 數據來自第三方 API，可能存在延遲或錯誤
+- **投資風險** - 投資涉及重大風險，可能導致本金損失
+- **請咨詢專業金融顧問** - 本技能不能替代專業建議
+- **使用風險自負** - 作者不對任何損失承擔責任
+
+**使用本技能即表示您同意此免責聲明。**
+
+---
+
+## GitHub 仓库 / GitHub 倉庫
+
+🔗 **https://github.com/xuan622/fin-intel-hub**
+
+---
+
+**Built with 🏗️ by David (CTO, Boring Life)**
+**由 David 打造 (Boring Life CTO)**
