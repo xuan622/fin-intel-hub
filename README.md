@@ -4,11 +4,12 @@ OpenClaw skill for comprehensive financial data scraping and analytics.
 
 ## Features
 
-- **SEC Filings** — Retrieve 10-K, 10-Q, 8-K filings from EDGAR
-- **Market Data** — Stock prices, earnings, fundamentals (Alpha Vantage)
-- **Crypto On-Chain** — DeFi TVL, exchange flows, gas prices (DeFiLlama, CoinGecko)
-- **News Sentiment** — Financial news analysis with sentiment scoring (NewsAPI)
-- **Macro Data** — Fed rates, CPI, unemployment, GDP (FRED API)
+- **SEC Filings** - Retrieve 10-K, 10-Q, 8-K filings from EDGAR
+- **Market Data** - Stock prices, earnings, fundamentals (Alpha Vantage + Yahoo Finance)
+- **Asian Markets** - Hong Kong, Tokyo, Taiwan, Korea, Shanghai, Shenzhen exchanges
+- **Crypto On-Chain** - DeFi TVL, exchange flows, gas prices (DeFiLlama, CoinGecko)
+- **News Sentiment** - Financial news analysis with sentiment scoring (NewsAPI)
+- **Macro Data** - Fed rates, CPI, unemployment, GDP (FRED API)
 
 ## Quick Start
 
@@ -65,6 +66,29 @@ quote = get_quote("TSLA")
 overview = get_company_overview("MSFT")
 ```
 
+### Asian Markets
+```python
+from scripts.yahoo_finance import get_hong_kong_stock, get_tokyo_stock, get_taiwan_stock
+
+# Hong Kong - Tencent (0700.HK)
+prices = get_hong_kong_stock("0700", period="1y")
+
+# Tokyo - Toyota (7203.T)
+prices = get_tokyo_stock("7203", period="1y")
+
+# Taiwan - TSMC (2330.TW)
+prices = get_taiwan_stock("2330", period="1y")
+
+# Korea - Samsung (005930.KS)
+from scripts.yahoo_finance import get_korea_stock
+prices = get_korea_stock("005930", period="1y")
+
+# China - Shanghai/Shenzhen
+from scripts.yahoo_finance import get_shanghai_stock, get_shenzhen_stock
+prices = get_shanghai_stock("600519")  # Kweichow Moutai
+prices = get_shenzhen_stock("000001")  # Ping An Bank
+```
+
 ### Crypto On-Chain
 ```python
 from scripts.crypto_onchain import get_defi_tvl, get_top_exchanges, get_exchange_flows
@@ -108,7 +132,8 @@ finance-data-intelligence/
 ├── SECURITY.md               # Security hardening checklist
 ├── scripts/
 │   ├── sec_filings.py        # SEC EDGAR integration
-│   ├── market_data.py        # Alpha Vantage (stocks)
+│   ├── market_data.py        # Alpha Vantage (US stocks)
+│   ├── yahoo_finance.py      # Yahoo Finance (global/Asian stocks)
 │   ├── crypto_onchain.py     # DeFiLlama, CoinGecko (crypto)
 │   ├── sentiment_news.py     # NewsAPI (news + sentiment)
 │   └── macro_data.py         # FRED API (macro indicators)
@@ -119,8 +144,9 @@ finance-data-intelligence/
 
 All APIs used have free tiers suitable for personal/research use:
 
-- **Alpha Vantage**: 25 API calls/day free
-- **NewsAPI**: 100 requests/day free  
+- **Alpha Vantage**: 25 API calls/day free (US stocks)
+- **Yahoo Finance**: Unlimited (no key required, global/Asian stocks)
+- **NewsAPI**: 100 requests/day free
 - **FRED**: 120 requests/minute free
 - **DeFiLlama**: Unlimited (no key required)
 - **CoinGecko**: Free tier available
@@ -138,7 +164,7 @@ See `SECURITY.md` for detailed security considerations.
 
 ## License
 
-MIT — Free to use, modify, and distribute.
+MIT - Free to use, modify, and distribute.
 
 ## Contributing
 
