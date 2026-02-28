@@ -203,12 +203,13 @@ For higher limits, upgrade directly with the API providers.
 
 ## Security
 
-- All API keys stored in environment variables only
-- No hardcoded secrets
-- HTTPS enforced on all API calls
-- Request timeouts configured
+- ✅ **Input Validation** - All ticker symbols sanitized (SQL injection prevention)
+- ✅ **Rate Limiting** - Automatic throttling for all APIs (25/day Alpha Vantage, etc.)
+- ✅ **Secure Logging** - Sensitive data (API keys, tokens) auto-redacted
+- ✅ **Safe Errors** - No stack traces or sensitive info leaked to users
+- ✅ **API Keys** - Environment variables only, no hardcoded secrets
 
-See `SECURITY.md` for detailed security considerations.
+See `SECURITY.md` for detailed security documentation.
 
 ## License
 
