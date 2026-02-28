@@ -1,5 +1,10 @@
 # Fin Intel Hub
 
+**Author:** xuan622  
+**Repository:** https://github.com/xuan622/fin-intel-hub  
+**License:** MIT  
+**Language:** Python  
+
 OpenClaw skill for comprehensive financial intelligence and analytics.
 
 **🌏 Multi-language Support:** [English](#fin-intel-hub) | [简体中文 / 繁體中文](README_CN.md)
@@ -18,23 +23,18 @@ OpenClaw skill for comprehensive financial intelligence and analytics.
 
 ### 1. Install
 
-#### Method A: Manual Installation (Recommended for Testing)
-
-Copy this skill folder to your OpenClaw skills directory:
+#### Method A: Install via Clawhub (Recommended)
 ```bash
-cp -r fin-intel-hub ~/.openclaw/skills/
-```
-
-#### Method B: Install from Clawhub (When Published)
-
-Once published to Clawhub, you can install via:
-```bash
-# Using Clawhub CLI
 npx clawhub install fin-intel-hub
-
-# Or install directly from GitHub
-npx clawhub install xuan622/fin-intel-hub
 ```
+
+#### Method B: Manual Installation
+Clone or download the repository to your OpenClaw skills directory:
+```bash
+git clone https://github.com/xuan622/fin-intel-hub.git ~/.openclaw/skills/fin-intel-hub
+```
+
+Or download and extract to `~/.openclaw/skills/fin-intel-hub/`.
 
 ### 2. Get API Keys (Optional)
 

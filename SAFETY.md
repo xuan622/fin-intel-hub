@@ -3,10 +3,22 @@
 ## Skill: fin-intel-hub v1.0.0
 
 ### Publisher Information
+- **Author:** xuan622
 - **GitHub:** https://github.com/xuan622
 - **Repository:** https://github.com/xuan622/fin-intel-hub
+- **License:** MIT (Open Source)
 - **Organization:** Boring Life
 - **Purpose:** Educational financial data aggregation
+
+### Environment Variables (All Optional)
+
+| Variable | Purpose | Required | Default |
+|----------|---------|----------|---------|
+| `ALPHA_VANTAGE_API_KEY` | Alpha Vantage API access | No | None |
+| `NEWS_API_KEY` | NewsAPI access | No | None |
+| `FRED_API_KEY` | FRED API access | No | None |
+
+**Note:** All environment variables are optional. The skill works without any API keys using Yahoo Finance, SEC EDGAR, DeFiLlama, and CoinGecko (no keys required).
 
 ### Data Sources (All Public/Legitimate)
 

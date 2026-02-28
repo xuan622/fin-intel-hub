@@ -34,43 +34,37 @@ OpenClaw 金融数据智能分析技能 - 支持全球市场包括美国、中�
 
 ### 🇨🇳 简体中文
 
-#### 方法 A：手动安装（推荐用于测试）
+#### 方法 A：通过 Clawhub 安装（推荐）
 ```bash
-# 安装技能
-cp -r fin-intel-hub ~/.openclaw/skills/
-
-# 无需 API 密钥即可使用！
-# 添加密钥可解锁更多功能（可选）
-```
-
-#### 方法 B：从 Clawhub 安装（发布后）
-```bash
-# 使用 Clawhub CLI
 npx clawhub install fin-intel-hub
-
-# 或从 GitHub 直接安装
-npx clawhub install xuan622/fin-intel-hub
 ```
+
+#### 方法 B：手动安装
+克隆或下载到 OpenClaw 技能目录：
+```bash
+git clone https://github.com/xuan622/fin-intel-hub.git ~/.openclaw/skills/fin-intel-hub
+```
+
+或下载并解压到 `~/.openclaw/skills/fin-intel-hub/`。
+
+**无需 API 密钥即可使用！**
 
 ### 🇭🇰 繁體中文 (香港)
 
-#### 方法 A：手動安裝（推薦用於測試）
+#### 方法 A：通過 Clawhub 安裝（推薦）
 ```bash
-# 安裝技能
-cp -r fin-intel-hub ~/.openclaw/skills/
-
-# 無需 API 密鑰即可使用！
-# 添加密鑰可解鎖更多功能（可選）
-```
-
-#### 方法 B：從 Clawhub 安裝（發布後）
-```bash
-# 使用 Clawhub CLI
 npx clawhub install fin-intel-hub
-
-# 或從 GitHub 直接安裝
-npx clawhub install xuan622/fin-intel-hub
 ```
+
+#### 方法 B：手動安裝
+克隆或下載到 OpenClaw 技能目錄：
+```bash
+git clone https://github.com/xuan622/fin-intel-hub.git ~/.openclaw/skills/fin-intel-hub
+```
+
+或下載並解壓到 `~/.openclaw/skills/fin-intel-hub/`。
+
+**無需 API 密鑰即可使用！**
 
 ---
 
