@@ -17,6 +17,9 @@
 | `ALPHA_VANTAGE_API_KEY` | Alpha Vantage API access | No | None |
 | `NEWS_API_KEY` | NewsAPI access | No | None |
 | `FRED_API_KEY` | FRED API access | No | None |
+| `GLASSNODE_API_KEY` | Glassnode API for enhanced crypto data | No | None |
+| `ETHERSCAN_API_KEY` | Etherscan API for Ethereum gas prices | No | None |
+| `WHALE_ALERT_API_KEY` | Whale Alert API for whale transactions | No | None |
 
 **Note:** All environment variables are optional. The skill works without any API keys using Yahoo Finance, SEC EDGAR, DeFiLlama, and CoinGecko (no keys required).
 

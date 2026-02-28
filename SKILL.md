@@ -14,6 +14,15 @@ environment_variables:
   - name: FRED_API_KEY
     description: Optional - FRED API key for macroeconomic data
     required: false
+  - name: GLASSNODE_API_KEY
+    description: Optional - Glassnode API key for enhanced crypto exchange flow data
+    required: false
+  - name: ETHERSCAN_API_KEY
+    description: Optional - Etherscan API key for Ethereum gas price data
+    required: false
+  - name: WHALE_ALERT_API_KEY
+    description: Optional - Whale Alert API key for whale transaction monitoring
+    required: false
 requirements: |
   No pip packages required. Uses only Python standard library + requests.
 ---

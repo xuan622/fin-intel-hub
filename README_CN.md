@@ -94,54 +94,6 @@ prices = get_hong_kong_stock("0700", period="1y")
 prices = get_taiwan_stock("2330")
 ```
 
-### 期权流分析 / 期權流分析
-
-**简体中文:**
-```python
-from scripts.options_data import analyze_options_flow
-
-# 分析期权流
-flow = analyze_options_flow("AAPL")
-print(f"认购/认沽比率: {flow['analysis']['call_put_ratio']}")
-print(f"Max Pain: ${flow['analysis']['max_pain']}")
-```
-
-**繁體中文 (香港):**
-```python
-from scripts.options_data import analyze_options_flow
-
-# 分析期權流
-flow = analyze_options_flow("AAPL")
-print(f"認購/認沽比率: {flow['analysis']['call_put_ratio']}")
-print(f"Max Pain: ${flow['analysis']['max_pain']}")
-```
-
-### 财报分析 / 財報分析
-
-**简体中文:**
-```python
-from scripts.earnings_data import get_earnings_history, analyze_earnings_trend
-
-# 获取财报历史
-earnings = get_earnings_history("AAPL", limit=4)
-
-# 分析财报趋势
-trend = analyze_earnings_trend("TSLA")
-print(f"超预期率: {trend['beat_rate']}%")
-```
-
-**繁體中文 (香港):**
-```python
-from scripts.earnings_data import get_earnings_history, analyze_earnings_trend
-
-# 獲取財報歷史
-earnings = get_earnings_history("AAPL", limit=4)
-
-# 分析財報趨勢
-trend = analyze_earnings_trend("TSLA")
-print(f"超預期率: {trend['beat_rate']}%")
-```
-
 ---
 
 ## 支持的市场 / 支持的市場
