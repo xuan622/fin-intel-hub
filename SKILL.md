@@ -14,6 +14,7 @@ Financial intelligence hub for OpenClaw. Supports global markets including US, C
 - **Global Market Data**: US stocks (Alpha Vantage) + Asian markets (Yahoo Finance)
 - **Asian Markets**: Hong Kong, Tokyo, Taiwan, Korea, Shanghai, Shenzhen
 - **Options Flow**: Unusual activity, call/put ratio, Max Pain, sentiment analysis
+- **Earnings Reports**: Historical earnings, beat/miss trends, next earnings date
 - **Crypto On-Chain**: Monitor wallet flows, exchange inflows/outflows
 - **News Sentiment**: Aggregate sentiment from financial news sources
 - **Macro Dashboard**: Fed rates, CPI, unemployment data
@@ -66,6 +67,7 @@ flows = get_exchange_flows(exchange="binance", days=7)
 - `scripts/sentiment_news.py` - News sentiment analysis
 - `scripts/macro_data.py` - FRED macroeconomic indicators
 - `scripts/options_data.py` - Options chain, flow analysis, Max Pain, unusual activity
+- `scripts/earnings_data.py` - Earnings history, trends, next earnings dates
 
 ### Asian Market Examples
 ```python
@@ -123,6 +125,26 @@ for alert in unusual[:5]:
 # Get Max Pain strike
 max_pain = get_max_pain("SPY")
 print(f"SPY Max Pain: ${max_pain}")
+```
+
+### Earnings Analysis Examples
+```python
+from scripts.earnings_data import get_earnings_history, get_next_earnings_date, analyze_earnings_trend
+
+# Get earnings history
+earnings = get_earnings_history("AAPL", limit=4)
+for e in earnings:
+    beat_miss = "BEAT" if e['beat'] else "MISS"
+    print(f"{e['report_date']}: EPS ${e['eps_actual']} vs Est ${e['eps_estimate']} ({beat_miss})")
+
+# Check next earnings date
+next_date = get_next_earnings_date("TSLA")
+print(f"Next earnings: {next_date['next_earnings_date']}")
+
+# Analyze earnings trend (beat/miss streak)
+trend = analyze_earnings_trend("MSFT")
+print(f"Beat rate: {trend['beat_rate']}%")
+print(f"Current streak: {trend['current_streak']}")
 ```
 
 For detailed API documentation and data schemas, see `references/`.

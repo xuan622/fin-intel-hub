@@ -8,7 +8,8 @@ OpenClaw skill for comprehensive financial intelligence and analytics.
 - **Market Data** — Stock prices, earnings, fundamentals (Alpha Vantage + Yahoo Finance)
 - **Asian Markets** — Hong Kong, Tokyo, Taiwan, Korea, Shanghai, Shenzhen exchanges
 - **Indices & Futures** — 15+ global indices, commodity futures
-- **Options Flow** — Unusual volume, call/put ratio, Max Pain, sentiment analysis
+- **Options Flow** — Unusual volume, call/put ratio, Max Pain, sentiment
+- **Earnings Reports** — Historical earnings, beat/miss analysis, upcoming dates analysis
 - **Crypto On-Chain** — DeFi TVL, exchange flows, gas prices (DeFiLlama, CoinGecko)
 - **News Sentiment** — Financial news analysis with sentiment scoring (NewsAPI)
 - **Macro Data** — Fed rates, CPI, unemployment, GDP (FRED API)
@@ -141,6 +142,25 @@ max_pain = get_max_pain("SPY")
 print(f"SPY Max Pain: ${max_pain}")
 ```
 
+### Earnings Reports
+```python
+from scripts.earnings_data import get_earnings_history, get_next_earnings_date, analyze_earnings_trend
+
+# Get historical earnings with beat/miss
+earnings = get_earnings_history("AAPL", limit=4)
+for e in earnings:
+    beat_miss = "BEAT" if e['beat'] else "MISS"
+    print(f"{e['report_date']}: EPS ${e['eps_actual']} vs Est ${e['eps_estimate']} ({beat_miss})")
+
+# Check next earnings date
+next_date = get_next_earnings_date("TSLA")
+print(f"Next earnings: {next_date['next_earnings_date']}")
+
+# Analyze earnings consistency (beat rate, streak)
+trend = analyze_earnings_trend("MSFT")
+print(f"Beat rate: {trend['beat_rate']}%, Streak: {trend['current_streak']}")
+```
+
 ### Crypto On-Chain
 ```python
 from scripts.crypto_onchain import get_defi_tvl, get_top_exchanges, get_exchange_flows
@@ -187,6 +207,7 @@ fin-intel-hub/
 │   ├── market_data.py        # Alpha Vantage (US stocks)
 │   ├── yahoo_finance.py      # Yahoo Finance (global/Asian stocks)
 │   ├── options_data.py       # Options chain, flow analysis, Max Pain
+│   ├── earnings_data.py      # Earnings history, trends, next earnings dates
 │   ├── crypto_onchain.py     # DeFiLlama, CoinGecko (crypto)
 │   ├── sentiment_news.py     # NewsAPI (news + sentiment)
 │   └── macro_data.py         # FRED API (macro indicators)
