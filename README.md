@@ -221,16 +221,25 @@ fin-intel-hub/
 All APIs used have free tiers suitable for personal/research use:
 
 ### No Key Required (Works Out-of-the-Box)
-- **Yahoo Finance**: Unlimited - Global stocks, Asian markets, indices, futures, commodities, options
+- **Yahoo Finance**: Unlimited - Global stocks, Asian markets, indices, futures, commodities
+  - ⚠️ Note: Options chain and earnings data endpoints may be rate limited by Yahoo Finance
 - **DeFiLlama**: Unlimited - DeFi TVL, crypto on-chain data
 - **CoinGecko**: Free tier available - Crypto exchange data
 
 ### Optional Keys (Unlock Additional Features)
-- **Alpha Vantage**: 25 API calls/day free - US stocks, earnings (Yahoo Finance covers this too)
+- **Alpha Vantage**: 25 API calls/day free - US stocks, earnings (Yahoo Finance covers stocks)
 - **NewsAPI**: 100 requests/day free - Financial news sentiment analysis
 - **FRED**: 120 requests/minute free - US macroeconomic indicators
 
 For higher limits, upgrade directly with the API providers.
+
+## Known Limitations
+
+### Yahoo Finance Rate Limiting
+Some Yahoo Finance endpoints (options chain, earnings history) may return 401/429 errors due to rate limiting or API changes. This is outside our control. Workarounds:
+- Use `yahoo_finance.py` for stocks, indices, futures (most reliable)
+- Use Alpha Vantage (with API key) for earnings data
+- Retry after a few minutes if rate limited
 
 ## Security
 

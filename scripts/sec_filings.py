@@ -82,7 +82,10 @@ class SECFilingsClient:
             acc_nums = recent.get("accessionNumber", [])
             descriptions = recent.get("primaryDocDescription", [])
             
-            for i in range(min(len(forms), limit * 2)):  # Get extra to filter
+            for i in range(len(forms)):  # Check all filings, not just first N
+                if len(filings) >= limit:
+                    break
+                    
                 if i >= len(forms):
                     break
                     

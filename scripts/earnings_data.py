@@ -72,6 +72,9 @@ class EarningsClient:
         """
         Get historical earnings data for a specific stock.
         
+        Note: Yahoo Finance may rate limit this endpoint. If you get empty results,
+        try again later or use Alpha Vantage's earnings data (with API key).
+        
         Args:
             ticker: Stock symbol (e.g., 'AAPL')
             limit: Number of past earnings to retrieve (default 4 quarters)
@@ -80,13 +83,31 @@ class EarningsClient:
             List of historical earnings results
         """
         try:
-            # Yahoo Finance earnings API
-            url = f"https://query1.finance.yahoo.com/v10/finance/quoteSummary/{ticker}"
-            params = {
-                "modules": "earningsHistory"
-            }
+            # Add a small delay to avoid rate limiting
+            import time
+            time.sleep(0.5)
+            
+            # Try the chart API which is more reliable
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}"
+            params = {"interval": "1d", "range": "1d"}
             
             response = self.session.get(url, params=params, timeout=10)
+            
+            # If chart works, try earnings endpoint with same session
+            url = f"https://query1.finance.yahoo.com/v10/finance/quoteSummary/{ticker}"
+            params = {"modules": "earningsHistory,calendarEvents"}
+            
+            response = self.session.get(url, params=params, timeout=10)
+            
+            # Check if we got rate limited
+            if response.status_code == 429:
+                print(f"Rate limited by Yahoo Finance for {ticker}. Try again later.")
+                return []
+            
+            if response.status_code == 401:
+                print(f"Authentication required for {ticker} earnings. Yahoo Finance may have changed their API.")
+                return []
+            
             data = response.json()
             
             if "quoteSummary" not in data or not data["quoteSummary"]["result"]:
