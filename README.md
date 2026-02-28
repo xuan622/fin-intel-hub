@@ -4,15 +4,14 @@ OpenClaw skill for comprehensive financial data scraping and analytics.
 
 ## Features
 
-- **SEC Filings** - Retrieve 10-K, 10-Q, 8-K filings from EDGAR
+- **SEC Filings** — Retrieve 10-K, 10-Q, 8-K filings from EDGAR
 - **Market Data** — Stock prices, earnings, fundamentals (Alpha Vantage + Yahoo Finance)
 - **Asian Markets** — Hong Kong, Tokyo, Taiwan, Korea, Shanghai, Shenzhen exchanges
 - **Indices & Futures** — 15+ global indices, commodity futures
-- **Options Flow** — Unusual volume, call/put ratio, Max Pain, sentiment
-- **Crypto On-Chain** — DeFi TVL, exchange flows, gas prices
-- **Crypto On-Chain** - DeFi TVL, exchange flows, gas prices (DeFiLlama, CoinGecko)
-- **News Sentiment** - Financial news analysis with sentiment scoring (NewsAPI)
-- **Macro Data** - Fed rates, CPI, unemployment, GDP (FRED API)
+- **Options Flow** — Unusual volume, call/put ratio, Max Pain, sentiment analysis
+- **Crypto On-Chain** — DeFi TVL, exchange flows, gas prices (DeFiLlama, CoinGecko)
+- **News Sentiment** — Financial news analysis with sentiment scoring (NewsAPI)
+- **Macro Data** — Fed rates, CPI, unemployment, GDP (FRED API)
 
 ## Quick Start
 
