@@ -4,6 +4,14 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 
+# Security imports
+from .security_utils import (
+    sanitize_ticker, validate_numeric, alpha_vantage_limiter,
+    SecureLogger, safe_api_call, ValidationError
+)
+
+logger = SecureLogger("market_data")
+
 @dataclass
 class PricePoint:
     date: str
@@ -43,6 +51,7 @@ class MarketDataClient:
                 "Get free key at: https://www.alphavantage.co/support/#api-key"
             )
     
+    @alpha_vantage_limiter
     def get_price_history(
         self, 
         ticker: str, 
@@ -57,6 +66,16 @@ class MarketDataClient:
             days: Number of days of history
             interval: 'daily', 'weekly', 'monthly', 'intraday'
         """
+        # Input validation
+        clean_ticker = sanitize_ticker(ticker)
+        if not clean_ticker:
+            logger.error(f"Invalid ticker symbol: {ticker}")
+            return []
+        
+        if not validate_numeric(days, min_val=1, max_val=5000):
+            logger.error(f"Invalid days parameter: {days}")
+            return []
+        
         if interval == "intraday":
             function = "TIME_SERIES_INTRADAY"
             extra_params = {"interval": "60min"}
@@ -72,7 +91,7 @@ class MarketDataClient:
         
         params = {
             "function": function,
-            "symbol": ticker,
+            "symbol": clean_ticker,
             "apikey": self.api_key,
             "outputsize": "compact" if days <= 100 else "full",
             **extra_params
