@@ -14,8 +14,6 @@ OpenClaw 金融数据智能分析技能 - 支持全球市场包括美国、中�
 - **市场数据** - 股票价格、收益、基本面数据
 - **亚洲市场** - 香港、东京、台湾、韩国、上海、深圳交易所
 - **指数与期货** - 15+ 全球指数、商品期货
-- **期权流分析** - 异常成交量、认购/认沽比率、Max Pain
-- **财报日历** - 历史财报、 beat/miss 趋势、下次财报日期
 - **加密货币链上** - DeFi TVL、交易所资金流、Gas 费用
 - **新闻情绪** - 财经新闻情绪分析
 - **宏观数据** - 美联储利率、CPI、失业率
@@ -26,8 +24,6 @@ OpenClaw 金融数据智能分析技能 - 支持全球市场包括美国、中�
 - **市場數據** - 股票價格、收益、基本面數據
 - **亞洲市場** - 香港、東京、台灣、韓國、上海、深圳交易所
 - **指數與期貨** - 15+ 全球指數、商品期貨
-- **期權流分析** - 異常成交量、認購/認沽比率、Max Pain
-- **財報日曆** - 歷史財報、 beat/miss 趨勢、下次財報日期
 - **加密貨幣鏈上** - DeFi TVL、交易所資金流、Gas 費用
 - **新聞情緒** - 財經新聞情緒分析
 - **宏觀數據** - 美聯儲利率、CPI、失業率
@@ -38,6 +34,7 @@ OpenClaw 金融数据智能分析技能 - 支持全球市场包括美国、中�
 
 ### 🇨🇳 简体中文
 
+#### 方法 A：手动安装（推荐用于测试）
 ```bash
 # 安装技能
 cp -r fin-intel-hub ~/.openclaw/skills/
@@ -46,14 +43,33 @@ cp -r fin-intel-hub ~/.openclaw/skills/
 # 添加密钥可解锁更多功能（可选）
 ```
 
+#### 方法 B：从 Clawhub 安装（发布后）
+```bash
+# 使用 Clawhub CLI
+npx clawhub install fin-intel-hub
+
+# 或从 GitHub 直接安装
+npx clawhub install xuan622/fin-intel-hub
+```
+
 ### 🇭🇰 繁體中文 (香港)
 
+#### 方法 A：手動安裝（推薦用於測試）
 ```bash
 # 安裝技能
 cp -r fin-intel-hub ~/.openclaw/skills/
 
 # 無需 API 密鑰即可使用！
 # 添加密鑰可解鎖更多功能（可選）
+```
+
+#### 方法 B：從 Clawhub 安裝（發布後）
+```bash
+# 使用 Clawhub CLI
+npx clawhub install fin-intel-hub
+
+# 或從 GitHub 直接安裝
+npx clawhub install xuan622/fin-intel-hub
 ```
 
 ---

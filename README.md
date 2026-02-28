@@ -18,9 +18,22 @@ OpenClaw skill for comprehensive financial intelligence and analytics.
 
 ### 1. Install
 
+#### Method A: Manual Installation (Recommended for Testing)
+
 Copy this skill folder to your OpenClaw skills directory:
 ```bash
 cp -r fin-intel-hub ~/.openclaw/skills/
+```
+
+#### Method B: Install from Clawhub (When Published)
+
+Once published to Clawhub, you can install via:
+```bash
+# Using Clawhub CLI
+npx clawhub install fin-intel-hub
+
+# Or install directly from GitHub
+npx clawhub install xuan622/fin-intel-hub
 ```
 
 ### 2. Get API Keys (Optional)
