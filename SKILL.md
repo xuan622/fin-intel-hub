@@ -18,15 +18,18 @@ Financial data scraping and analytics skill for OpenClaw. Supports global market
 - **News Sentiment**: Aggregate sentiment from financial news sources
 - **Macro Dashboard**: Fed rates, CPI, unemployment data
 
-## API Keys Required
+## API Keys (Optional)
 
-| Service | Purpose | Free Tier |
-|---------|---------|-----------|
-| Alpha Vantage | US stock prices, earnings | 25 calls/day |
-| NewsAPI | Financial news | 100 requests/day |
-| Dune Analytics | Crypto on-chain | Query via API |
-| FRED API | Macroeconomic data | Unlimited |
-| Yahoo Finance | Global/Asian stocks | No key needed |
+All API keys are **optional**. The skill works without any keys using Yahoo Finance for stock data.
+Add keys to unlock additional features:
+
+| Service | Purpose | Free Tier | Required? |
+|---------|---------|-----------|-----------|
+| Yahoo Finance | Global/Asian stocks, indices, futures, commodities | Unlimited | **No** |
+| Alpha Vantage | US stocks, earnings | 25 calls/day | Optional |
+| NewsAPI | Financial news sentiment | 100 requests/day | Optional |
+| FRED API | Macroeconomic data | Unlimited | Optional |
+| DeFiLlama | Crypto on-chain data | Unlimited | **No** |
 
 ## Quick Start
 

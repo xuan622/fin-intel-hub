@@ -23,18 +23,24 @@ Copy this skill folder to your OpenClaw skills directory:
 cp -r finance-data-intelligence ~/.openclaw/skills/
 ```
 
-### 2. Get API Keys (Free Tiers Available)
+### 2. Get API Keys (Optional)
+
+**No API keys required to start!** The skill works out-of-the-box with Yahoo Finance for global stock data.
+
+Add API keys to unlock additional features:
 
 | Service | Purpose | Free Tier | Get Key |
 |---------|---------|-----------|---------|
-| Alpha Vantage | Stock prices, earnings | 25 calls/day | [alphavantage.co](https://www.alphavantage.co/support/#api-key) |
-| NewsAPI | Financial news | 100 requests/day | [newsapi.org](https://newsapi.org/register) |
+| **Yahoo Finance** | **Global stocks, indices, futures** | **Unlimited** | **No key needed** ✅ |
+| Alpha Vantage | US stocks, earnings | 25 calls/day | [alphavantage.co](https://www.alphavantage.co/support/#api-key) |
+| NewsAPI | Financial news sentiment | 100 requests/day | [newsapi.org](https://newsapi.org/register) |
 | FRED | Macroeconomic data | 120 requests/min | [fred.stlouisfed.org](https://fred.stlouisfed.org/docs/api/api_key.html) |
-| DeFiLlama | DeFi TVL, crypto data | Unlimited (no key) | N/A |
+| DeFiLlama | DeFi TVL, crypto data | Unlimited | N/A |
 
-### 3. Set Environment Variables
+### 3. Set Environment Variables (Optional)
 
 ```bash
+# Optional - only if you want these features
 export ALPHA_VANTAGE_API_KEY="your_key"
 export NEWS_API_KEY="your_key"
 export FRED_API_KEY="your_key"
@@ -192,12 +198,15 @@ finance-data-intelligence/
 
 All APIs used have free tiers suitable for personal/research use:
 
-- **Alpha Vantage**: 25 API calls/day free (US stocks)
-- **Yahoo Finance**: Unlimited (no key required, global/Asian stocks)
-- **NewsAPI**: 100 requests/day free
-- **FRED**: 120 requests/minute free
-- **DeFiLlama**: Unlimited (no key required)
-- **CoinGecko**: Free tier available
+### No Key Required (Works Out-of-the-Box)
+- **Yahoo Finance**: Unlimited - Global stocks, Asian markets, indices, futures, commodities, options
+- **DeFiLlama**: Unlimited - DeFi TVL, crypto on-chain data
+- **CoinGecko**: Free tier available - Crypto exchange data
+
+### Optional Keys (Unlock Additional Features)
+- **Alpha Vantage**: 25 API calls/day free - US stocks, earnings (Yahoo Finance covers this too)
+- **NewsAPI**: 100 requests/day free - Financial news sentiment analysis
+- **FRED**: 120 requests/minute free - US macroeconomic indicators
 
 For higher limits, upgrade directly with the API providers.
 

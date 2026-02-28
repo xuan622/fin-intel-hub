@@ -37,19 +37,19 @@ class MarketDataClient:
     
     def __init__(self, api_key: Optional[str] = None):
         """
-        Initialize with API key.
+        Initialize with optional API key.
         
         Args:
-            api_key: Alpha Vantage API key. If None, reads from ALPHA_VANTAGE_API_KEY env var.
-                     Users can provide their own key (free or paid tier).
+            api_key: Alpha Vantage API key. If None, tries ALPHA_VANTAGE_API_KEY env var.
+                     If no key available, methods will return empty results with helpful message.
         """
         self.api_key = api_key or os.getenv("ALPHA_VANTAGE_API_KEY")
-        if not self.api_key:
-            raise ValueError(
-                "Alpha Vantage API key required. "
-                "Set ALPHA_VANTAGE_API_KEY env var or pass api_key parameter. "
-                "Get free key at: https://www.alphavantage.co/support/#api-key"
-            )
+        self.has_api_key = bool(self.api_key)
+        
+        if not self.has_api_key:
+            logger.info("Alpha Vantage API key not provided. US stock features limited. "
+                       "Consider using yahoo_finance module for free stock data, "
+                       "or get free key at: https://www.alphavantage.co/support/#api-key")
     
     @alpha_vantage_limiter
     def get_price_history(
@@ -59,13 +59,23 @@ class MarketDataClient:
         interval: str = "daily"
     ) -> List[PricePoint]:
         """
-        Get historical price data.
+        Get historical price data from Alpha Vantage.
+        
+        Note: Requires Alpha Vantage API key. For free stock data without API key,
+        use yahoo_finance module instead.
         
         Args:
             ticker: Stock symbol
             days: Number of days of history
             interval: 'daily', 'weekly', 'monthly', 'intraday'
         """
+        # Check if API key available
+        if not self.has_api_key:
+            logger.warning("Alpha Vantage API key required for stock data. "
+                          "Use yahoo_finance.get_price_history() for free alternative, "
+                          "or set ALPHA_VANTAGE_API_KEY environment variable.")
+            return []
+        
         # Input validation
         clean_ticker = sanitize_ticker(ticker)
         if not clean_ticker:

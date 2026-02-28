@@ -20,13 +20,15 @@ class NewsSentimentClient:
     
     def __init__(self, api_key: Optional[str] = None):
         """
-        Initialize with NewsAPI key.
+        Initialize with optional NewsAPI key.
         
         Args:
             api_key: NewsAPI key. If None, reads from NEWS_API_KEY env var.
+                     If not provided, news features will be unavailable.
                      Get free key at: https://newsapi.org/register
         """
         self.api_key = api_key or os.getenv("NEWS_API_KEY")
+        self.has_api_key = bool(self.api_key)
         self.base_url = "https://newsapi.org/v2"
         
         # Simple sentiment word lists (lexicon-based)
@@ -51,14 +53,19 @@ class NewsSentimentClient:
         """
         Get financial news articles.
         
+        Note: Requires NewsAPI key. Set NEWS_API_KEY environment variable
+        or pass api_key to constructor.
+        
         Args:
             query: Search query (e.g., "stock market", "inflation")
             ticker: Stock ticker to search for
             days: How many days back to search
             page_size: Number of articles (max 100)
         """
-        if not self.api_key:
-            print("NEWS_API_KEY not set. Get free key at https://newsapi.org")
+        if not self.has_api_key:
+            print("NewsAPI key required for news features. "
+                  "Set NEWS_API_KEY environment variable, "
+                  "or get free key at: https://newsapi.org/register")
             return []
         
         # Build query
