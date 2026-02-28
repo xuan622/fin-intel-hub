@@ -240,6 +240,40 @@ For higher limits, upgrade directly with the API providers.
 
 See `SECURITY.md` for detailed security documentation.
 
+## Disclaimer
+
+**IMPORTANT: READ THIS DISCLAIMER CAREFULLY BEFORE USING THIS SKILL**
+
+### Not Financial Advice
+This skill is for **informational and educational purposes only**. All data, analysis, and information provided through this skill should not be construed as financial advice, investment recommendations, or trading recommendations.
+
+### No Liability
+The authors, contributors, and maintainers of this skill:
+- **Are not financial advisors** and do not provide investment advice
+- **Assume no liability** for any losses, damages, or financial harm resulting from the use of this skill
+- **Make no guarantees** about the accuracy, completeness, or timeliness of the data
+- **Are not responsible** for any trading decisions, investment losses, or financial consequences
+
+### Data Accuracy
+- Data is sourced from third-party APIs (Yahoo Finance, Alpha Vantage, etc.)
+- We do not control, verify, or guarantee the accuracy of external data
+- Data may be delayed, incomplete, or contain errors
+- Always verify critical information with official sources before making financial decisions
+
+### Risk Warning
+- **Investing involves substantial risk**, including possible loss of principal
+- Past performance does not guarantee future results
+- Options trading, crypto trading, and stock trading carry significant risk
+- Do not trade with money you cannot afford to lose
+
+### Professional Advice
+Always consult with a **qualified financial advisor** before making investment decisions. This skill is not a substitute for professional financial advice tailored to your specific situation.
+
+### Jurisdiction
+This skill is provided "as is" without warranty of any kind. By using this skill, you agree that any disputes shall be governed by applicable laws and that you use this skill at your own risk.
+
+**By using this skill, you acknowledge and agree to this disclaimer.**
+
 ## License
 
 MIT - Free to use, modify, and distribute.
