@@ -5,8 +5,11 @@ OpenClaw skill for comprehensive financial data scraping and analytics.
 ## Features
 
 - **SEC Filings** - Retrieve 10-K, 10-Q, 8-K filings from EDGAR
-- **Market Data** - Stock prices, earnings, fundamentals (Alpha Vantage + Yahoo Finance)
-- **Asian Markets** - Hong Kong, Tokyo, Taiwan, Korea, Shanghai, Shenzhen exchanges
+- **Market Data** — Stock prices, earnings, fundamentals (Alpha Vantage + Yahoo Finance)
+- **Asian Markets** — Hong Kong, Tokyo, Taiwan, Korea, Shanghai, Shenzhen exchanges
+- **Indices & Futures** — 15+ global indices, commodity futures
+- **Options Flow** — Unusual volume, call/put ratio, Max Pain, sentiment
+- **Crypto On-Chain** — DeFi TVL, exchange flows, gas prices
 - **Crypto On-Chain** - DeFi TVL, exchange flows, gas prices (DeFiLlama, CoinGecko)
 - **News Sentiment** - Financial news analysis with sentiment scoring (NewsAPI)
 - **Macro Data** - Fed rates, CPI, unemployment, GDP (FRED API)
@@ -112,6 +115,27 @@ indices = list_available_indices()   # 15+ global indices
 futures = list_available_futures()   # 15+ futures contracts
 ```
 
+### Options Flow Analysis
+```python
+from scripts.options_data import analyze_options_flow, get_unusual_options_activity
+from scripts.options_data import get_max_pain, get_call_put_ratio
+
+# Full options flow analysis
+flow = analyze_options_flow("AAPL")
+print(f"Call/Put Ratio: {flow['analysis']['call_put_ratio']}")
+print(f"Max Pain: ${flow['analysis']['max_pain']}")
+print(f"Sentiment: {flow['analysis']['sentiment']['bias']}")
+
+# Unusual options activity (volume spike > 2x average)
+unusual = get_unusual_options_activity("TSLA", threshold=2.0)
+for alert in unusual[:5]:
+    print(f"{alert['type']} ${alert['strike']}: {alert['volume']} contracts")
+
+# Get Max Pain strike (where most options expire worthless)
+max_pain = get_max_pain("SPY")
+print(f"SPY Max Pain: ${max_pain}")
+```
+
 ### Crypto On-Chain
 ```python
 from scripts.crypto_onchain import get_defi_tvl, get_top_exchanges, get_exchange_flows
@@ -157,6 +181,7 @@ finance-data-intelligence/
 │   ├── sec_filings.py        # SEC EDGAR integration
 │   ├── market_data.py        # Alpha Vantage (US stocks)
 │   ├── yahoo_finance.py      # Yahoo Finance (global/Asian stocks)
+│   ├── options_data.py       # Options chain, flow analysis, Max Pain
 │   ├── crypto_onchain.py     # DeFiLlama, CoinGecko (crypto)
 │   ├── sentiment_news.py     # NewsAPI (news + sentiment)
 │   └── macro_data.py         # FRED API (macro indicators)

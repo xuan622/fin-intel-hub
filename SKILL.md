@@ -13,6 +13,7 @@ Financial data scraping and analytics skill for OpenClaw. Supports global market
 - **Earnings Calendar**: Track upcoming earnings and historical beats/misses
 - **Global Market Data**: US stocks (Alpha Vantage) + Asian markets (Yahoo Finance)
 - **Asian Markets**: Hong Kong, Tokyo, Taiwan, Korea, Shanghai, Shenzhen
+- **Options Flow**: Unusual activity, call/put ratio, Max Pain, sentiment analysis
 - **Crypto On-Chain**: Monitor wallet flows, exchange inflows/outflows
 - **News Sentiment**: Aggregate sentiment from financial news sources
 - **Macro Dashboard**: Fed rates, CPI, unemployment data
@@ -61,6 +62,7 @@ flows = get_exchange_flows(exchange="binance", days=7)
 - `scripts/crypto_onchain.py` - Blockchain data via DeFiLlama/CoinGecko
 - `scripts/sentiment_news.py` - News sentiment analysis
 - `scripts/macro_data.py` - FRED macroeconomic indicators
+- `scripts/options_data.py` - Options chain, flow analysis, Max Pain, unusual activity
 
 ### Asian Market Examples
 ```python
@@ -97,6 +99,27 @@ natural_gas = get_natural_gas(period="6mo")
 # List all available
 indices = list_available_indices()
 futures = list_available_futures()
+```
+
+### Options Analysis Examples
+```python
+from scripts.options_data import analyze_options_flow, get_unusual_options_activity
+from scripts.options_data import get_max_pain, get_call_put_ratio
+
+# Full options flow analysis
+flow = analyze_options_flow("AAPL")
+print(f"Call/Put Ratio: {flow['analysis']['call_put_ratio']}")
+print(f"Max Pain: ${flow['analysis']['max_pain']}")
+print(f"Sentiment: {flow['analysis']['sentiment']['bias']}")
+
+# Unusual options activity (volume spike > 2x average)
+unusual = get_unusual_options_activity("TSLA", threshold=2.0)
+for alert in unusual[:5]:
+    print(f"{alert['type']} ${alert['strike']}: {alert['volume']} contracts")
+
+# Get Max Pain strike
+max_pain = get_max_pain("SPY")
+print(f"SPY Max Pain: ${max_pain}")
 ```
 
 For detailed API documentation and data schemas, see `references/`.
